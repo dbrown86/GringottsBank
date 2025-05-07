@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gringotts Wizarding Bank - Transfer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gringotts.css') }}">
+    <style>
+        .transfer-form {
+            background-color: #f8f0d8;
+            border: 1px solid #d4b56e;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #d4b56e;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+        .submit-button {
+            background-color: #d4b56e;
+            color: #3c2c0f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #c19d4b;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gringotts-container">
+        <div class="gringotts-header">
+            <h1>Gringotts Wizarding Bank</h1>
+            <p>"The Safest Place for Your Valuables"</p>
+        </div>
+        
+        <h2>Transfer Galleons</h2>
+        
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <div class="transfer-form">
+            <form action="/transfer" method="post">
+                <!-- CSRF Protection -->
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+                <div class="form-group">
+                    <label for="direction">Transfer Direction:</label>
+                    <select id="direction" name="direction" required>
+                        <option value="">-- Select Direction --</option>
+                        <option value="to_vault">From Knapsack to Vault</option>
+                        <option value="from_vault">From Vault to Knapsack</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount (Galleons):</label>
+                    <input type="number" id="amount" name="amount" min="1" max="1000" required>
+                    <small>Maximum transfer: 1000 Galleons</small>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Execute Transfer</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="gringotts-nav">
+            <a href="/dashboard">Return to Accounts</a> |
+            <a href="/logout">Exit Gringotts</a>
+        </div>
+        
+        <div class="gringotts-footer">
+            <p>⚠️ Warning: Unauthorized access to Gringotts vaults is strictly prohibited.</p>
+            <p>Protected by the finest goblin security measures and ancient magic.</p>
+
+            <div class="goblin-container">
+                <div class="goblin-background"></div>
+                <div class="goblin"></div>
+            </div>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Script to ensure animation works without delay -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force browser to repaint animation
+            const goblin = document.querySelector('.goblin');
+            if (goblin) {
+                // Trigger a reflow/repaint by accessing offsetHeight
+                void goblin.offsetHeight;
+                
+                // Apply animation dynamically
+                goblin.style.animation = 'moveGoblin 40s linear infinite, glowEdges 3s infinite alternate';
+            }
+        });
+        </script>
+    </body>
+    </html>

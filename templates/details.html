@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details - Gringotts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gringotts.css') }}">
+</head>
+<body>
+    <div class="gringotts-container">
+        <!-- Greeting at the very top -->
+        <p class="greeting">Greetings, {{ user|e }}</p>
+        
+        <!-- Header Section -->
+        <div class="gringotts-header">
+            <h1>Gringotts Wizarding Bank</h1>
+            <p>"Fortius Quo Fidelius" - Strength Through Loyalty</p>
+        </div>
+
+        <!-- Account Display -->
+        <div class="gringotts-account">
+            <h3>Account Details</h3>
+            <p class="gringotts-account-number">
+                Account #: {{ account_number|e }}
+            </p>
+            
+            <!-- Balance Display -->
+            <div class="gringotts-balance">
+                <span class="galleon-icon"></span>
+                <span class="currency">Galleons</span>: {{ balance|e }}
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="gringotts-nav">
+            <a href="/dashboard" class="gringotts-button">Return to Vaults</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="gringotts-footer">
+            <p>Gringotts Wizarding Bank - Est. 1474</p>
+            <p><em>"Enter, stranger, but take heed<br>
+            Of what awaits the sin of greed..."</em></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Gringotts Bank</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f5f5dc;
+            color: #5c0000;
+            text-align: center;
+            padding: 50px;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #b8860b;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
+        }
+        h1 {
+            color: #800000;
+        }
+        .error-code {
+            font-size: 72px;
+            color: #b8860b;
+            margin: 0;
+        }
+        .return-link {
+            margin-top: 30px;
+            display: inline-block;
+            background-color: #800000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .return-link:hover {
+            background-color: #5c0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h1>Vault Not Found</h1>
+        <p>The vault you are looking for does not exist or has been moved to a deeper level of Gringotts.</p>
+        <p><em>"Not all who wander are lost, but in Gringotts, precision is required to find your destination."</em></p>
+        
+        <a href="{{ url_for('login') }}">Return to Login</a>
+    </div>
+</body>
+</html>

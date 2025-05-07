@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Gringotts Bank</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f5f5dc;
+            color: #5c0000;
+            text-align: center;
+            padding: 50px;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #b8860b;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
+        }
+        h1 {
+            color: #800000;
+        }
+        .return-link {
+            margin-top: 30px;
+            display: inline-block;
+            background-color: #800000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .return-link:hover {
+            background-color: #5c0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Vault Access Error</h1>
+        <p>Our goblin staff is currently investigating an issue with this vault. Please try again later.</p>
+        <p><em>"For those who seek to access our vaults, patience is required when magic is being restored."</em></p>
+        
+        <a href="{{ url_for('login') }}">Return to Login</a>
+    </div>
+</body>
+</html>

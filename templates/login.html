@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gringotts Wizarding Bank - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gringotts.css') }}">
+    <style>
+        .gringotts-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px auto;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+        .gringotts-logo img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateX(50px); /* Move the image more to the right for better centering above form fields */
+        }
+    </style>
+</head>
+<body>
+    <div class="gringotts-container">
+        <div class="gringotts-header">
+            <h1>GRINGOTTS WIZARDING BANK</h1>
+            <p>"Fortius Quo Fidelius" - Strength Through Loyalty</p>
+        </div>
+        
+        <!-- GIF Image - Now properly centered and moved right -->
+        <div class="gringotts-logo">
+            <img src="{{ url_for('static', filename='img/vaultDoor.gif') }}" alt="Gringotts Vault">
+        </div>
+        
+        {% if error %}
+        <div class="gringotts-error">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <div class="gringotts-form">
+            <form method="POST" action="/login">
+                {% if error %}
+                    <div class="error">{{ error }}</div>
+                {% endif %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+                <label for="email">Wizard Identification (Email):</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Secret Incantation (Password):</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="gringotts-button">ENTER THE VAULTS</button>
+            </form>
+        </div>
+        
+        <div class="gringotts-footer">
+            <p>Gringotts Wizarding Bank - Est. 1474</p>
+            <p><em>"Enter, stranger, but take heed<br>
+            Of what awaits the sin of greed..."</em></p>
+        </div>
+    </div>
+</body>
+</html>

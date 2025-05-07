@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gringotts Wizarding Bank - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gringotts.css') }}">
+    <style>
+        .balance-summary {
+            background-color: #f8f0d8;
+            border: 1px solid #d4b56e;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+        .balance-summary p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        /* Shimmering gold border animation for account fields */
+        @keyframes goldShimmer {
+            0% {
+                border-color: #d4b56e;
+                box-shadow: 0 0 5px #d4b56e;
+            }
+            50% {
+                border-color: #ffd700;
+                box-shadow: 0 0 15px #ffd700;
+            }
+            100% {
+                border-color: #d4b56e;
+                box-shadow: 0 0 5px #d4b56e;
+            }
+        }
+        
+        .gringotts-account {
+            border: 2px solid #d4b56e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: goldShimmer 3s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+        
+        .gringotts-account:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="gringotts-container">
+        <div class="gringotts-header">
+            <h1>Gringotts Wizarding Bank</h1>
+            <p>"The Safest Place for Your Valuables"</p>
+        </div>
+        
+        <div class="wizard-info">
+            <h2>Welcome, Esteemed Wizard</h2>
+        </div>
+        
+        {% if request.args.get('transfer_success') %}
+        <div class="gringotts-success">
+            Your transfer has been completed successfully. The goblins have moved your galleons safely.
+        </div>
+        {% endif %}
+        
+        <h2>Your Holdings</h2>
+        
+        <!-- Direct Balance Display -->
+        <div class="balance-summary">
+            {% for account in accounts %}
+            <div class="gringotts-account">
+              <h3>
+                {% if 'knapsack' in account.name|lower %}
+                  Knapsack Account
+                {% elif 'vault' in account.name|lower %}
+                  Vault Account
+                {% else %}
+                  {{ account.name }}
+                {% endif %}
+              </h3>
+              <div class="gringotts-account-number">Account: {{ account.account_type }}</div>
+              <div class="gringotts-balance">
+                <span class="galleon-icon"></span>
+                <span class="currency">Galleons:</span> {{ account.balance }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+        <div class="gringotts-nav">
+            <a href="/transfer">Transfer Galleons</a> |
+            <a href="/logout">Exit Gringotts</a>
+        </div>
+        
+        <div class="gringotts-footer">
+            <p>⚠️ Warning: Unauthorized access to Gringotts vaults is strictly prohibited.</p>
+            <p>Protected by the finest goblin security measures and ancient magic.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Just for enhancement - not required for functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add subtle magical sparkle effect to gold elements if desired
+            const accounts = document.querySelectorAll('.gringotts-account');
+            accounts.forEach(account => {
+                // Random slight variation in animation timing for each account
+                const randomDelay = Math.random() * 2;
+                account.style.animationDelay = `${randomDelay}s`;
+            });
+        });
+    </script>
+</body>
+</html>

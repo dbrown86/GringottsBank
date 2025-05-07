@@ -1,0 +1,312 @@
+/* Gringotts Wizarding Bank Theme */
+
+@font-face {
+    font-family: 'Wizarding';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-solid-900.woff2') format('woff2');
+    /* Using Font Awesome as a placeholder since we can't add custom fonts */
+}
+
+:root {
+    --gringotts-gold: #D4AF37;
+    --gringotts-dark: #1C1C1C;
+    --gringotts-marble: #F5F5F5;
+    --gringotts-accent: #7D0000;
+    --gringotts-text: #333333;
+    --gringotts-green: #0D5D3C;
+}
+
+body {
+    font-family: 'Wizarding', 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gringotts-marble);
+    background-image: url("/static/img/background.jpg");
+    background-size: cover;
+    background-position: center center; /* Center the background */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+    color: var(--gringotts-text);
+}
+
+.gringotts-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--gringotts-gold);
+}
+
+.gringotts-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--gringotts-gold);
+    padding-bottom: 20px;
+}
+
+.gringotts-header h1 {
+    font-size: 2.5rem;
+    color: var(--gringotts-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.gringotts-header p {
+    font-style: italic;
+    color: var(--gringotts-dark);
+}
+
+.gringotts-form {
+    margin-bottom: 30px;
+}
+
+.gringotts-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    color: var(--gringotts-dark);
+}
+
+.gringotts-form input[type="text"],
+.gringotts-form input[type="password"],
+.gringotts-form input[type="email"],
+.gringotts-form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--gringotts-gold);
+    background-color: #FFF8E7;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+
+.gringotts-button {
+    background-color: var(--gringotts-accent);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+    font-family: inherit;
+    display: block;
+    margin: 0 auto; /* Center the button */
+}
+
+.gringotts-button:hover {
+    background-color: #9A0000;
+}
+
+.gringotts-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    border-left: 4px solid #dc3545;
+}
+
+.gringotts-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    border-left: 4px solid #28a745;
+}
+
+
+.gringotts-account h3 {
+    color: var(--gringotts-accent);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.gringotts-account-number {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.gringotts-balance {
+    color: var(--gringotts-dark);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.gringotts-balance .currency {
+    color: var(--gringotts-gold);
+    font-weight: normal;
+}
+
+.gringotts-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--gringotts-gold);
+    font-size: 0.9rem;
+    color: var(--gringotts-dark);
+}
+
+.gringotts-nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.gringotts-nav a {
+    margin: 0 10px;
+    color: var(--gringotts-accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.gringotts-nav a:hover {
+    text-decoration: underline;
+}
+
+.gringotts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.gringotts-table th {
+    background-color: var(--gringotts-accent);
+    color: white;
+    text-align: left;
+    padding: 10px;
+}
+
+.gringotts-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.gringotts-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.wizard-info {
+    margin-bottom: 20px;
+}
+
+.galleon-icon::before {
+    content: "ⓖ";
+    color: var(--gringotts-gold);
+    margin-right: 5px;
+}
+
+
+.balance-summary {
+    background-color: #f8f0d8;
+    border: 1px solid #d4b56e;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+.balance-summary p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Shimmering gold border animation for account fields */
+@keyframes goldShimmer {
+    0% {
+        border-color: #d4b56e;
+        box-shadow: 0 0 5px #d4b56e;
+    }
+    50% {
+        border-color: #ffd700;
+        box-shadow: 0 0 15px #ffd700;
+    }
+    100% {
+        border-color: #d4b56e;
+        box-shadow: 0 0 5px #d4b56e;
+    }
+}
+
+.gringotts-account {
+    border: 2px solid #d4b56e;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    animation: goldShimmer 3s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.gringotts-account:hover {
+    transform: scale(1.02);
+}
+
+/* Goblin animation styles */
+.goblin-container {
+    position: relative;
+    height: 60px; /* Adjust as needed */
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: rgba(32, 32, 32, 0.1);
+    border-radius: 5px;
+    clear: both;
+    display: block;
+}
+
+.goblin-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(32, 32, 32, 0.5); /* Translucent background */
+    z-index: 1;
+}
+
+.goblin {
+    position: absolute;
+    bottom: 0px; 
+    width: 100px; /* Width of the image */
+    height: 68px; /* Height of the image */
+    background-image: url("/static/img/dancing_goblin.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: moveGoblin 40s linear infinite, glowEdges 3s infinite alternate;
+    z-index: 10; /* Ensure the goblin appears above the background */
+    filter: drop-shadow(0 0 5px var(--gringotts-gold)); /* Golden glow effect */
+}
+
+
+
+@keyframes pulseGold {
+    0% { 
+        box-shadow: 0 0 5px 1px var(--gringotts-gold);
+        opacity: 0.7;
+    }
+    50% { 
+        box-shadow: 0 0 12px 3px var(--gringotts-gold);
+        opacity: 1;
+    }
+    100% { 
+        box-shadow: 0 0 5px 1px var(--gringotts-gold);
+        opacity: 0.7;
+    }
+}
+
+@keyframes glowEdges {
+    from { filter: drop-shadow(0 0 3px var(--gringotts-gold)); }
+    to { filter: drop-shadow(0 0 8px var(--gringotts-gold)); }
+}
+@keyframes moveGoblin {
+    0% { left: -200px; }
+    100% { left: 100%; }
+}
+
+
